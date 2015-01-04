@@ -3,7 +3,7 @@
 
 ## 什么 Gui？
 
-这是 [Rust 简例][website] 的源代码！
+这是 [Rust 简例][website]的源代码！
 
 ## 如何贡献？
 
@@ -34,7 +34,7 @@ make test
 
 这个工作包含两步：
 
-### Generating the `SUMMARY.md`
+### 生成 `SUMMARY.md`
 
 `SUMMARY.md` 是通过 [examples/structure.json][structure] 生成的。这个 JSON
 文件包含了一个例子们的类树形结构。
@@ -54,33 +54,27 @@ When dealing with a child example, the path will have to include the id of its
 ancestors; e.g. `examples/variable/mut/input.md`, implies that a `mut` example
 lives under the `variable` example.
 
-### Processing `input.md`
+### 处理 `input.md`
 
-Instead of including the rust code directly in `input.md`, the code lives in
-separate source files; and the preprocessing step will insert the source code
-in the markdown file.
+Rust 的代码我们不直接放在 `input.md` 里面，而是放在另外的源文件里面；然后前置工作会把源代码插入到
+markdown 文件里面。
 
-For example, to insert the source code of the `hello.rs` file, the following
-syntax is used in the markdown file:
+举个栗子，为了插入 `hello.rs`，我们会在 markdown 文件里面添加如下的标记：
 
-* `{hello.play}` expands the source code embedded in a live code editor
-* `{hello.rs}` expands to static/plain source code.
-* `{hello.out}` expands to the output of executing the source code.
+* `{hello.play}` 会把代码嵌入到一个在线编辑框里面。
+* `{hello.rs}` 会放到静态文本里面。
+* `{hello.out}` 会放这个程序的输出结果。
 
-The Makefile provides the following recipes:
+Makefile 提供了以下指令：
 
-* `make`: builds `update.rs` and does the preprocessing step
-* `make book`: runs `gitbook` to generate the book
-* `make serve`: runs `gitbook --serve` to generate the book and publishes it
-  under `localhost:4000`
-* `make test`: will check all the rust source files for compilation errors
+* `make`: 构建 `update.rs` 然后执行上述前置工作
+* `make book`: 执行 `gitbook` 来生成 book
+* `make serve`: 执行 `gitbook --serve` 来生成 book 然后以 `localhost:4000` 预览
+* `make test`: 会测试所有的 Rust 源文件是否有编译错误
 
 ## License
 
-Rust by example is dual licensed under the Apache 2.0 license and the MIT
-license.
-
-See LICENSE-APACHE and LICENSE-MIT for more details.
+Rust 简例包含了两种协议——Apache 2.0 以及 MIT 协议。请阅读该两种协议的详细内容。
 
 [travis-image]: https://travis-ci.org/rust-lang/rust-by-example.svg?branch=master
 [travis-link]: https://travis-ci.org/rust-lang/rust-by-example
