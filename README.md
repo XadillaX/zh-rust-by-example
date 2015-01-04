@@ -1,16 +1,15 @@
 [![Build Status][travis-image]][travis-link]
-# Rust by Example
+# Rust 简例
 
-## What's this?
+## 什么 Gui？
 
-This is the source code of the
-[Rust by example][website] website!
+这是 [Rust 简例][website] 的源代码！
 
-## How to contribute
+## 如何贡献？
 
-See [CONTRIBUTING.md][how-to-contribute].
+参照 [CONTRIBUTING.md][how-to-contribute]。
 
-## How to generate the static site
+## 如何生成静态页？
 
 ```
 make all
@@ -18,40 +17,38 @@ make book
 make test
 ```
 
-View the results with `make serve`.
+输入 `make serve` 来查看结果。
 
-Note: on Ubuntu `node` may be called `nodejs`. I had to edit `.bin/gitbook` accordingly.
+注意：在 Ubuntu 里 `node` 可能叫 `nodejs`。我不得不相应地修改 `.bin/gitbook`。
 
-### Details
+### 详细说明
 
-We use these tools to generate the static site:
+我们使用下面的工具来生成这个静态站：
 
-* [Rust][rust-lang] \o/
+* [Rust][rust-lang] (ﾉ◕ヮ◕)ﾉ\*:･ﾟ✧
 * [gitbook][gitbook]
 
-`gitbook` will generate the site from markdown files (see details about how it
-works [here][gitbook-format]).
+`gitbook` 会从 Markdown 文件中生成页面（[点我](gitbook-format)看看它是怎么工作的）。
 
-Before running `gitbook`, we do a preprocessing step using
-[src/update.rs][update-rs].
+在跑 `gitbook` 之前我们需要用 [src/update.rs][update-rs] 来做一些前置工作。
 
-This preprocessing has two steps:
+这个工作包含两步：
 
 ### Generating the `SUMMARY.md`
 
-`SUMMARY.md` is generated from the
-[examples/structure.json][structure] file. This JSON file
-contains a tree-like structure of "examples".
+`SUMMARY.md` 是通过 [examples/structure.json][structure] 生成的。这个 JSON
+文件包含了一个例子们的类树形结构。
 
-Each example has:
+每个例子包含：
 
-* an id, e.g. `hello`
-* a title, e.g. `Hello World`
-* optionally, children, which is a vector of sub-examples, e.g. `null`
-* a directory under `examples`, e.g. [examples/hello][hello-folder]
+* ID，如 `hello`
+* 标题，如 `Hello World`
+* 子节点，该项为可选项，包含了其子节点，如 `null`
+* 一个在 `examples` 目录下的子目录，如 [examples/hello][hello-folder]
+* 一个在 examples/structure.json 里面的入口点，如 `{ "id": "hello", "title":
+    "Hello World", "children": null }`
 * an entry in examples/structure.json, e.g.
-  `{ "id": "hello", "title": "Hello World", "children": null }`
-* some source file(s), e.g. [examples/hello/hello.rs][hello-rs]
+  * some source file(s), e.g. [examples/hello/hello.rs][hello-rs]
 * an input markdown file, e.g.
   [examples/hello/input.md][hello-md]
 
