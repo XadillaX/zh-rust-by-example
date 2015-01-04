@@ -1,6 +1,10 @@
 [![Build Status][travis-image]][travis-link]
 # Rust 简例
 
+## 原项目
+
+该项目是从《[Rust by Example](https://github.com/rust-lang/rust-by-example)》中翻译过来的。
+
 ## 什么 Gui？
 
 这是 [Rust 简例][website]的源代码！
