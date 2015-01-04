@@ -47,10 +47,8 @@ make test
 * 一个在 `examples` 目录下的子目录，如 [examples/hello][hello-folder]
 * 一个在 examples/structure.json 里面的入口点，如 `{ "id": "hello", "title":
     "Hello World", "children": null }`
-* an entry in examples/structure.json, e.g.
-  * some source file(s), e.g. [examples/hello/hello.rs][hello-rs]
-* an input markdown file, e.g.
-  [examples/hello/input.md][hello-md]
+  * 一些源文件，如 [examples/hello/hello.rs][hello-rs]
+* 一个输入 Markdown 文件，如 [examples/hello/input.md][hello-md]
 
 When dealing with a child example, the path will have to include the id of its
 ancestors; e.g. `examples/variable/mut/input.md`, implies that a `mut` example
