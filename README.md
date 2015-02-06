@@ -15,6 +15,14 @@
 
 ## 如何生成静态页？
 
+First, make certain you install `nodejs` on Debian based distributions, or
+`node` on non-Debian distros. After installation, if you use a Debian based
+distro (i.e. Ubuntu), run:
+
+    sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+Then run:
+
 ```
 make all
 make book
@@ -76,7 +84,7 @@ Makefile 提供了以下指令：
 * `make serve`: 执行 `gitbook --serve` 来生成 book 然后以 `localhost:4000` 预览
 * `make test`: 会测试所有的 Rust 源文件是否有编译错误
 
-## License
+## 开源协议
 
 Rust 简例包含了两种协议——Apache 2.0 以及 MIT 协议。请阅读该两种协议的详细内容。
 
@@ -86,8 +94,8 @@ Rust 简例包含了两种协议——Apache 2.0 以及 MIT 协议。请阅读�
 [how-to-contribute]: CONTRIBUTING.md
 [rust-lang]: http://www.rust-lang.org/
 [gitbook]: http://www.gitbook.io
-[gitbook-dir]: https://github.com/GitbookIO/gitbook#book-format
-[update-rs]: src/update.rs
+[gitbook-format]: https://github.com/GitbookIO/gitbook#book-format
+[main-rs]: src/main.rs
 [structure]: examples/structure.json
 [hello-folder]: examples/hello
 [hello-rs]: examples/hello/hello.rs

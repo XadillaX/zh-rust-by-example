@@ -1,8 +1,8 @@
 use std::collections::HashSet;
 
 fn main() {
-    let mut a: HashSet<int> = vec!(1i, 2, 3).into_iter().collect();
-    let mut b: HashSet<int> = vec!(2i, 3, 4).into_iter().collect();
+    let mut a: HashSet<i32> = vec!(1i32, 2, 3).into_iter().collect();
+    let mut b: HashSet<i32> = vec!(2i32, 3, 4).into_iter().collect();
 
     assert!(a.insert(4));
     assert!(a.contains(&4));
@@ -15,22 +15,22 @@ fn main() {
     b.insert(5);
 
     // If a collection's element type implements `Show`,
-    // then the collection implements `Show`. 
+    // then the collection implements `Show`.
     // It usually prints its elements in the format `[elem1, elem2, ...]`
-    println!("A: {}", a);
-    println!("B: {}", b);
+    println!("A: {:?}", a);
+    println!("B: {:?}", b);
 
     // Print [1, 2, 3, 4, 5] in arbitrary order
-    println!("Union: {}", a.union(&b).collect::<Vec<&int>>());
+    println!("Union: {:?}", a.union(&b).collect::<Vec<&i32>>());
 
     // This should print [1]
-    println!("Difference: {}", a.difference(&b).collect::<Vec<&int>>());
+    println!("Difference: {:?}", a.difference(&b).collect::<Vec<&i32>>());
 
     // Print [2, 3, 4] in arbitrary order.
-    println!("Intersection: {}", a.intersection(&b).collect::<Vec<&int>>());
+    println!("Intersection: {:?}", a.intersection(&b).collect::<Vec<&i32>>());
 
     // Print [1, 5]
-    println!("Symmetric Difference: {}", 
-             a.symmetric_difference(&b).collect::<Vec<&int>>());
+    println!("Symmetric Difference: {:?}",
+             a.symmetric_difference(&b).collect::<Vec<&i32>>());
 }
 

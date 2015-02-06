@@ -1,24 +1,38 @@
-// Null enumerations to define unit types
-#[deriving(Show, Copy)]
-enum Inch {}
-#[deriving(Show, Copy)]
-enum Mm {}
+use std::ops::Add;
 
-// Length is phantom type with hidden parameter `Unit`
-#[deriving(Show, Copy)]
+/// Null enumerations to define unit types
+#[derive(Show, Copy)]
+struct Inch;
+#[derive(Show, Copy)]
+struct Mm;
+
+/// Length is phantom type with hidden parameter `Unit`
+#[derive(Show, Copy)]
 struct Length<Unit, T>(T,);
 
-// `impl X for Y {}` reads "implement `X` Trait for Type `Y`"
-// So, this implements the `Add` Trait for Type `Length`
-// The `Add` Trait overloads the addition operator
-// so elements can be added together.
-// `X: Y` applies a restriction to `X` and only allows operations
-// to `X` if `X` implements the Trait `Y`.
-// This means that this `impl` defines `Add` only for `T` when
-// two `T's` can be added together and the result is of
-// Type `T`: (`T: Add<T,T>`)
-impl <Unit,T: Add<T,T> + Copy> Add<Length<Unit, T>,
-                               Length<Unit, T>> for Length<Unit, T> {
+/// impl X for Y {} means "implement the trait `X` for the Type `Y`"
+/// The following lines implement the `Add` trait for Length.
+///
+/// The `<Unit, T: Add<T, Output=T>` after `impl` declares two generic
+/// types, `Unit`, which can be any type, and `T`, which is a type that
+/// must implement both traits `Copy` (which means no need to borrow,
+/// move, or clone; you can just pass in a variable, and both the caller
+/// and callee will own their own copy), and the trait `Add<T, Output=T>`.
+///
+/// `Add<T, Output=T>` means that the type implements Add, taking in a T
+/// (meaning an i32 plus an i32, or an f64 plus an f64, etc.), and giving
+/// back a T (i32 + i32 = i32).
+///
+/// So, this impl implements `Add<Length<Unit, T>` for `Length<Unit, T>`, 
+/// which means you can add a `Length` to another `Length` of the same type.
+///
+/// `type Output = Length<Unit, T>` means that this impl gives back a
+/// `Length<Unit, T>`, so that 
+/// `Length<Mm, f64> + Length<Mm, f64> = Length<Mm, f64>`
+impl<Unit, T: Add<T, Output=T> + Copy> Add<Length<Unit, T>>
+        for Length<Unit, T> {
+    type Output = Length<Unit, T>;
+
     fn add(self, r: Length<Unit, T>) -> Length<Unit, T> {
         let Length(ref left)  = self;
         let Length(ref right) = r;
@@ -37,8 +51,8 @@ fn main() {
     let two_meters = one_meter + one_meter;
 
     // Addition works
-    println!("one foot + one_foot = {}", two_feet);
-    println!("one meter + one_meter = {}", two_meters);
+    println!("one foot + one_foot = {:?}", two_feet);
+    println!("one meter + one_meter = {:?}", two_meters);
 
     // Nonsensical operations fail as they should
     // Error: type mismatch

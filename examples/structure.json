@@ -78,7 +78,7 @@
   { "id": "option", "title": "`Option`", "children": null },
   { "id": "array", "title": "Arrays and Slices", "children": null },
   { "id": "trait", "title": "Traits", "children": [
-      { "id": "deriving", "title": "Deriving", "children": null }
+      { "id": "derive", "title": "Derive", "children": null }
   ] },
   { "id": "ops", "title": "Operator Overloading", "children": null },
   { "id": "bounds", "title": "Bounds", "children": null },
@@ -112,7 +112,12 @@
         { "id": "doc-comment", "title": "Doc Comments", "children": null }
     ] },
     { "id": "ffi", "title": "Foreign Function Interface", "children": null  },
-    { "id": "macros", "title": "macro_rules!", "children": null  },
+    { "id": "macros", "title": "macro_rules!", "children": [
+        { "id": "designators", "title": "Designators", "children": null },
+        { "id": "overload", "title": "Overload", "children": null },
+        { "id": "repeat", "title": "Repeat", "children": null },
+        { "id": "dry", "title": "DRY", "children": null }
+    ] },
     { "id": "arg", "title": "Program arguments", "children": [
         { "id": "matching", "title": "Argument parsing", "children": null },
         { "id": "getopts", "title": "`getopts`", "children": null }
@@ -121,11 +126,6 @@
     { "id": "simd", "title": "SIMD", "children": null  },
     { "id": "test", "title": "Testing", "children": null  },
     { "id": "unsafe", "title": "Unsafe operations", "children": null  },
-    { "id": "json", "title": "JSON parsing", "children": [
-        { "id": "json-enum", "title": "`Json`", "children": null },
-        { "id": "decodable", "title": "`Decodable`", "children": null },
-        { "id": "encodable", "title": "`Encodable`", "children": null }
-    ] },
     { "id": "fmt", "title": "Formatting", "children": null },
     { "id": "hash", "title": "HashMap", "children": [
         { "id": "alt-key-types", "title": "Alternate/custom key types", "children": null},

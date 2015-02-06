@@ -1,10 +1,10 @@
 // A tuple struct that can be compared
-#[deriving(PartialEq, PartialOrd)]
+#[derive(PartialEq, PartialOrd)]
 struct Centimeters(f64);
 
 // A tuple struct that can be printed
-#[deriving(Show)]
-struct Inches(int);
+#[derive(Show)]
+struct Inches(i32);
 
 impl Inches {
     fn to_centimeters(&self) -> Centimeters {
@@ -15,7 +15,7 @@ impl Inches {
 }
 
 // A vanilla tuple struct
-struct Seconds(int);
+struct Seconds(i32);
 
 fn main() {
     let _one_second = Seconds(1);
@@ -32,7 +32,7 @@ fn main() {
 
     let foot = Inches(12);
 
-    println!("One foot === {}", foot);
+    println!("One foot === {:?}", foot);
 
     let meter = Centimeters(100.0);
 

@@ -17,18 +17,18 @@ fn main() {
         csqrtf(z)
     };
 
-    println!("the square root of {} is {}", z, z_sqrt);
+    println!("the square root of {:?} is {:?}", z, z_sqrt);
 }
 
 // Minimal implementation of single precision complex numbers
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 struct Complex {
     re: f32,
     im: f32,
 }
 
-impl fmt::Show for Complex {
+impl fmt::Debug for Complex {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.im < 0. {
             write!(f, "{}-{}i", self.re, -self.im)

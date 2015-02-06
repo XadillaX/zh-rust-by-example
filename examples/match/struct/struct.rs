@@ -1,5 +1,5 @@
 fn main() {
-    struct Foo { x: (uint, uint), y: uint }
+    struct Foo { x: (u32, u32), y: u32 }
 
     // destructure members of the struct
     let foo = Foo { x: (1, 2), y: 3 };
@@ -11,7 +11,7 @@ fn main() {
     // the order is not important
 
     let Foo { y: i, x: j } = foo;
-    println!("i = {}, j = {}", i, j);
+    println!("i = {:?}, j = {:?}", i, j);
 
     // and you can also ignore some variables:
     let Foo { y, .. } = foo;

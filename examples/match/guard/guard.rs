@@ -1,8 +1,8 @@
 fn main() {
-    let pair = (2i, -2);
+    let pair = (2i32, -2);
     // TODO ^ Try different values for `pair`
 
-    println!("Tell me about {}", pair);
+    println!("Tell me about {:?}", pair);
     // Match can be used to destructure a tuple
     match pair {
         // Destructure the tuple
